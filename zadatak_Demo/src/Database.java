@@ -68,7 +68,7 @@ public class Database implements ICommands {
             }
         }
         else {
-            return "Greska! Komparator: " + comparator + " ne postoji. (Opcije: l, g, e)";
+            return "Greska! Komparator: " + comparator + " ne postoji. (Opcije: l/g/e)";
         }
         return stringBuilder.toString();
     }
