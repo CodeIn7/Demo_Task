@@ -1,7 +1,7 @@
 
 public class Check {
 
-    public static void checkRead(Database database, String[] inputField) {
+    public static void checkRead(String[] inputField) {
         if (inputField.length != 2) {
             throw new DatabaseException("Netocan broj argumenata naredbe read (pr. read arg1)");
         } else if (!inputField[1].matches("^\\d+$")) {
@@ -11,8 +11,8 @@ public class Check {
         }
     }
 
-    public static void checkCreate(Database database, String[] inputField) {
-        if (inputField.length != 4) {
+    public static void checkCreate(String[] inputField) {
+        if (inputField.length != 5) {
             throw new DatabaseException("Greska! Nedostaje relacija!");
         } else if (!inputField[1].matches("^\\d+$") || !inputField[4].matches("^\\d$") || !inputField[2].matches("[a-zA-Z]+") || !inputField[3].matches("[a-zA-Z]+")) {
             throw new DatabaseException("Greska! Uneseni tip podatka netocan! (arg1 -> jmbag 8 znamenki, arg2 i arg3 -> ime i prezime string, arg4 -> ocjena 1 znamenka)");
@@ -21,7 +21,7 @@ public class Check {
         }
     }
 
-    public static void checkFilterGrade(Database database, String[] inputField) {
+    public static void checkFilterGrade(String[] inputField) {
         if (inputField.length != 3) {
             throw new DatabaseException("Greska! Filter-grade naredba zahtjeva 2 argumenta (arg1 -> g/l/e tj. lower/greater/equal)");
         } else if (!inputField[1].matches("g|l|e")) {
@@ -31,7 +31,7 @@ public class Check {
         }
     }
 
-    public static boolean checkFilterName(Database database, String[] inputField) {
+    public static boolean checkFilterName(String[] inputField) {
         boolean casing = false;
         if (inputField.length != 3 && inputField.length != 2) {
             throw new DatabaseException("Greska! Netocan broj argumenata, arg1 -> ime, arg2 -> casing (opcionalan argument).");

@@ -9,7 +9,7 @@ public class Database implements ICommands {
 
 
     @Override
-    public String read(Database database, int jmbag) {
+    public String read(int jmbag) {
         StringBuilder stringBuilder = new StringBuilder();
         boolean exists = false;
         for(Student student : students) {
@@ -25,7 +25,7 @@ public class Database implements ICommands {
     }
 
     @Override
-    public String filterName(Database database, String pattern, String casing) {
+    public String filterName(String pattern, String casing) {
         StringBuilder stringBuilder = new StringBuilder();
         for(Student student : students) {
             if (student.getName().toLowerCase().startsWith(pattern.toLowerCase())) {
@@ -44,7 +44,7 @@ public class Database implements ICommands {
     }
 
     @Override
-    public String filterGrade(Database database, String comparator, int comparedGrade) {
+    public String filterGrade(String comparator, int comparedGrade) {
         StringBuilder stringBuilder = new StringBuilder();
         if (comparator.equals("l")) {
             for(Student student : students) {
@@ -74,7 +74,7 @@ public class Database implements ICommands {
     }
 
     @Override
-    public String create(Database database, int jmbag, String name, String surname, int grade) {
+    public String create(int jmbag, String name, String surname, int grade) {
         Student student = new Student(jmbag, name, surname, grade);
         students.add(student);
         return "Added new student: " + student.toString();

@@ -12,49 +12,49 @@ public class Input {
 
             if(input.startsWith("read")) {
                 try {
-                    Check.checkRead(database, inputField);
+                    Check.checkRead(inputField);
                 }
                 catch (DatabaseException e) {
                     System.out.println(e.getMessage());
                     continue;
                 }
-                System.out.println(database.read(database, Integer.parseInt(inputField[1])));
+                System.out.println(database.read(Integer.parseInt(inputField[1])));
             }
             else if (inputField[0].equals("create")) {
                 try {
-                    Check.checkCreate(database, inputField);
+                    Check.checkCreate(inputField);
                 }
                 catch (DatabaseException e) {
                     System.out.println(e.getMessage());
                     continue;
                 }
-                System.out.println(database.create(database, Integer.parseInt(inputField[1]), inputField[2], inputField[3], Integer.parseInt(inputField[4])));
+                System.out.println(database.create(Integer.parseInt(inputField[1]), inputField[2], inputField[3], Integer.parseInt(inputField[4])));
             }
             else if (inputField[0].startsWith("filter")) {
                 if (inputField[0].startsWith("filter-grade")) {
                     try {
-                        Check.checkFilterGrade(database, inputField);
+                        Check.checkFilterGrade(inputField);
                     }
                     catch (DatabaseException e) {
                         System.out.println(e.getMessage());
                         continue;
                     }
-                   System.out.println(database.filterGrade(database, inputField[1], Integer.parseInt(inputField[2])));
+                   System.out.println(database.filterGrade(inputField[1], Integer.parseInt(inputField[2])));
                 }
                 else if (inputField[0].startsWith("filter-name")) {
                     boolean casing;
                     try {
-                        casing = Check.checkFilterName(database, inputField);
+                        casing = Check.checkFilterName(inputField);
                     }
                     catch (DatabaseException e) {
                         System.out.println(e.getMessage());
                         continue;
                     }
                     if (!casing) {
-                        System.out.println(database.filterName(database, inputField[1], null));
+                        System.out.println(database.filterName(inputField[1], null));
                     }
                     else {
-                        System.out.println(database.filterName(database, inputField[1], inputField[2]));
+                        System.out.println(database.filterName(inputField[1], inputField[2]));
                     }
                 }
                 else {
